@@ -15,6 +15,7 @@ button {
 .header {
   padding-top: 20px;
   margin-left: 30px;
+  display: none;
 }
 .flex {
   display: flex;
@@ -23,20 +24,22 @@ button {
 .side {
   display: flex;
   margin: 30px;
+  justify-content: space-evenly;
 }
 
 .products {
   display: grid;
   width: fit-content;
-  grid-template-columns: repeat(3, 300px);
-  row-gap: 40px;
-  column-gap: 40px;
+  grid-template-columns: repeat(3, 250px);
+  row-gap: 30px;
+  column-gap: 30px;
   place-self: left;
   margin: 10px;
 }
 
 .product-card {
   align-items: center;
+    width: 250px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .prod-details {
@@ -46,7 +49,7 @@ button {
   margin: 20px 0 10px 0;
 }
 .product-card > img {
-  width: 300px;
+  width: 250px;
   border-radius: 5px;
   max-height: fit-content;
 }
@@ -178,29 +181,72 @@ hr {
   cursor: pointer;
 }
 
+.search-bar {
+  display: block;
+  width: 100%;
+  max-width: 530px;
+  padding: 10px;
+  margin: 20px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  place-self: start;
+  margin: 35px 10px 0 40px;
+}
+
 @media (max-width: 767px) {
   .side {
     flex-direction: column;
     padding: 1rem;
+    margin-top: 0;
+  }
+  .header {
+    padding-top: 20px;
+    font-size: 25px;
+    place-self: center;
+    margin: 0;
   }
 
   .products {
     grid-template-columns: 1fr;
-    order: 2;
+    width: 250px;
+    place-self: center;
   }
 
+  .product-card,
+  .product-card > img {
+    width: 250px;
+  }
   .cart-box {
-    width: 100%;
+    width: 250px;
     margin-top: 2rem;
-    order: 1;
+    place-self: center;
+  }
+
+  .search-bar {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    padding: 10px;
+    margin: 70px 10px 0 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    place-self: center;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .side {
+   .side {
     flex-direction: column;
-    padding: 1.5rem;
-    place-items: center;
+    padding: 1rem;
+    margin-top: 0;
+  }
+  .header {
+    padding-top: 20px;
+    font-size: 25px;
+    place-self: center;
+    margin: 0;
   }
 
   .products {
@@ -218,5 +264,16 @@ hr {
 
   .header {
     text-align: center;
+  }
+  .search-bar {
+    display: block;
+    width: 100%;
+    max-width: 550px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    place-self: center;
+    margin: 70px 10px 0 10px;
   }
 }

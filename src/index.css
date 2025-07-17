@@ -25,6 +25,7 @@ button {
   display: flex;
   margin: 30px;
   justify-content: space-evenly;
+  align-items: flex-start;
 }
 
 .products {
@@ -39,7 +40,7 @@ button {
 
 .product-card {
   align-items: center;
-    width: 250px;
+  width: 250px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .prod-details {
@@ -72,7 +73,29 @@ button {
   padding-right: 8px;
   border: none;
 }
+.hamburger-menu {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.cart-box.visible {
+  width: 100%;
+}
 
+.cart-items {
+  width: 100%;
+  padding-right: 15px;
+  position: sticky;
+  align-self: flex-start;
+  top: 20px;
+}
+
+.cart-toggle {
+  margin-bottom: 10px;
+  place-self: center;
+}
 .cart-box {
   background-color: hsl(20, 50%, 98%);
   width: 100%;
@@ -82,6 +105,9 @@ button {
   margin-left: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  position: sticky;
+  align-self: flex-start;
+  top: 20px;
 }
 
 .cart-box img {
@@ -133,7 +159,8 @@ button {
   width: 30px;
   font-size: 20px;
   border-radius: 5px;
-  background-color: #ddd;
+  background-color: black;
+  color: white;
   border: none;
   margin: 5px;
 }
@@ -160,6 +187,11 @@ button {
   color: white;
   border: none;
   border-radius: 4px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
 }
 
 .cart-total > button:hover {
@@ -196,7 +228,7 @@ hr {
 
 @media (max-width: 767px) {
   .side {
-    flex-direction: column;
+    flex-direction: column-reverse;
     padding: 1rem;
     margin-top: 0;
   }
@@ -234,11 +266,43 @@ hr {
     border-radius: 6px;
     place-self: center;
   }
+  .hamburger-menu {
+    display: block;
+    margin: 10px auto;
+  }
+
+  .cart-box {
+    width: 100%;
+    margin: 2rem 0rem;
+    place-self: center;
+  }
+
+  .cart-items {
+    width: 100%;
+    margin: 0 auto;
+    position: sticky;
+    align-self: flex-start;
+    top: 20px;
+  }
+
+  .cart-toggle {
+    display: flex;
+    align-items: baseline;
+    gap: 0px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    place-self: center;
+  }
+
+  .cart-toggle > span {
+    font-size: 20px;
+    margin-left: 5px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-   .side {
-    flex-direction: column;
+  .side {
+    flex-direction: column-reverse;
     padding: 1rem;
     margin-top: 0;
   }
@@ -275,5 +339,39 @@ hr {
     border-radius: 6px;
     place-self: center;
     margin: 70px 10px 0 10px;
+  }
+
+  .hamburger-menu {
+    display: block;
+    margin: 10px auto;
+  }
+
+  .cart-box {
+    width: 100%;
+    margin: 2rem 0rem;
+    place-self: center;
+    /* display: none; */
+  }
+
+  .cart-items {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .cart-toggle {
+    display: flex;
+    align-items: baseline;
+    gap: 0px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    place-self: center;
+    position: sticky;
+    align-self: flex-start;
+    top: 20px;
+  }
+
+  .cart-toggle > span {
+    font-size: 20px;
+    margin-left: 5px;
   }
 }

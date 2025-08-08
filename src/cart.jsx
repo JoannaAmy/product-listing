@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { CartContext } from "./cartContext";
 
 const Cart = () => {
@@ -11,10 +11,26 @@ const Cart = () => {
     removeItem,
   } = useContext(CartContext);
 
-  const [isCartVisible, setIsCartVisible] = useState(false);
+  const [isCartVisible, setIsCartVisible] = useState(() => window.innerWidth > 768);
   const handleToggle = () => {
     setIsCartVisible((isOn) => !isOn);
   };
+
+  useEffect(() => {
+  const handleResize = () => {
+    if (window.innerWidth > 768) {
+      setIsCartVisible(true);
+    } else {
+      setIsCartVisible(false);
+    }
+  };
+
+  handleResize();
+  window.addEventListener("resize", handleResize);
+
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
 
   return (
     <>
@@ -65,9 +81,9 @@ const Cart = () => {
                       </div>
                     </div>
                   </div>
+                  
                 );
               })}
-              <hr />
               <div className="cart-total">
                 {cartItems.length > 0 ? (
                   <>

@@ -8,10 +8,18 @@ const ProductDetails = () => {
   const [searchText, setSearchText] = useState("");
   const { addToCart } = useContext(CartContext);
 
+  const normalizeString = (str) => str.normalize("NFD").toLowerCase();
+
+  const search = searchText.normalize("NFD").toLowerCase();
+
   const filteredProducts = products.filter(
     (product) =>
-      product.name.toLowerCase().includes(searchText.toLowerCase()) ||
-      product.category.toLowerCase().includes(searchText.toLowerCase())
+      normalizeString(product.name)
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      normalizeString(product.category)
+        .toLowerCase()
+        .includes(search.toLowerCase())
   );
 
   useEffect(() => {
